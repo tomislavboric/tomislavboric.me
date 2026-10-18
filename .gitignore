@@ -1,0 +1,7 @@
+# private preparation material: unanonymised sources, original photos
+_portfolio-prep/
+assets/
+# style explorations (kept locally, not deployed)
+variants/
+.DS_Store
+.vercel
