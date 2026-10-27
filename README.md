@@ -2,19 +2,19 @@
 
 Source of my personal site, live at **[www.tomislavboric.me](https://www.tomislavboric.me/)**.
 
-Hand-written HTML and CSS. No framework, no build step, no tracking.
+Built with Next.js (App Router, TypeScript) and hand-written CSS Modules. No tracking.
 
-- `index.html` is the whole site: work, about, contact.
-- `css/style.css` holds the styles.
-- `img/` holds pre-sized WebP images. Screenshots have identifying details masked, and the image metadata is stripped.
-- `vercel.json` sets clean URLs, security headers and long-lived caching for images.
+- `app/` holds the layout, page metadata, global styles and the favicon.
+- `components/` holds one component per section, each with its own CSS Module.
+- `data/` holds the project list and contact details shown on the page.
+- `public/img/` holds pre-sized WebP images. Screenshots have identifying details masked, and the image metadata is stripped.
+- `vercel.json` sets security headers and long-lived caching for images.
 
 ## Run locally
 
-Any static server works, for example:
-
 ```sh
-npx serve .
+npm install
+npm run dev
 ```
 
 ## Rights

@@ -5,3 +5,8 @@ assets/
 variants/
 .DS_Store
 .vercel
+# Next.js
+node_modules/
+.next/
+next-env.d.ts
+*.tsbuildinfo

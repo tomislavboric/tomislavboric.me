@@ -1,0 +1,12 @@
+.header {
+  position: sticky; top: 0; z-index: 10;
+  background: rgb(11 16 23 / 0.82);
+  backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+}
+.inner { display: flex; align-items: center; justify-content: space-between; gap: 16px; min-height: 58px; }
+.brand { font-family: var(--font-mono); font-size: 0.95rem; text-decoration: none; letter-spacing: 0.02em; }
+.brand::before { content: "~/ "; color: var(--accent); }
+.nav { display: flex; gap: clamp(14px, 3vw, 28px); font-family: var(--font-mono); font-size: 0.85rem; }
+.nav a { text-decoration: none; color: var(--text-muted); }
+.nav a:hover { color: var(--accent); }

@@ -1,0 +1,14 @@
+.about { padding-block: clamp(40px, 7vw, 80px); border-top: 1px solid var(--border); }
+.inner { display: grid; gap: 32px; }
+@media (min-width: 880px) {
+  .inner { grid-template-columns: minmax(0, 7fr) minmax(0, 4fr); column-gap: 64px; }
+  .head { grid-column: 1 / -1; }
+}
+.text p + p { margin-top: 1em; }
+.side { padding: 24px; background: var(--bg-raised); border: 1px solid var(--border); border-radius: var(--radius); align-self: start; }
+.side h3 { font-family: var(--font-mono); font-size: 0.78rem; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; color: var(--accent); margin: 0 0 12px; }
+.side h3 + p, .side ul + h3 { margin-top: 24px; }
+.checklist { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
+.checklist li { position: relative; padding-left: 24px; }
+.checklist li::before { content: ">"; position: absolute; left: 0; top: 0; color: var(--accent); font-family: var(--font-mono); font-weight: 700; }
+.tools { font-family: var(--font-mono); font-size: 0.9rem; line-height: 1.9; }
