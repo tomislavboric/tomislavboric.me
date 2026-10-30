@@ -133,9 +133,9 @@ export const projects: Project[] = [
     subtitle: "Product UI in an event-management SaaS",
     images: [
       {
-        src: "/img/sched-pd-hours-1440.webp",
-        width: 1440,
-        height: 962,
+        src: "/img/sched-pd-hours-1614.webp",
+        width: 1614,
+        height: 1121,
         alt: "Sched organiser control panel, PD Hours page: a dark side navigation, a year-round learning catalog with CEU credits per session, and a seven-step compliance workflow from import to certificates and reports.",
       },
       {
