@@ -27,9 +27,6 @@ export default function WorkIndex({ projects }: Props) {
         const isActive = i === active;
         const isLocked = i === locked;
         const panelId = `project-${project.slug}`;
-        // The role is the heading under the screenshots; the other facts stay in the list.
-        const role = project.facts.find((fact) => fact.label === "Role")?.value;
-        const otherFacts = project.facts.filter((fact) => fact.label !== "Role");
         const preview = () => {
           if (locked === null) setActive(i);
         };
@@ -49,11 +46,13 @@ export default function WorkIndex({ projects }: Props) {
             data-locked={isLocked || undefined}
             style={{ "--row": i + 1 } as CSSProperties}
           >
+            <div className={styles.side}>
             <h3 className={styles.head}>
               <a
                 href={`#${panelId}`}
                 className={styles.title}
                 aria-current={isActive ? "true" : undefined}
+                aria-expanded={isLocked}
                 onMouseEnter={preview}
                 onFocus={preview}
                 onClick={onClick}
@@ -79,34 +78,53 @@ export default function WorkIndex({ projects }: Props) {
                 </span>
               </a>
             </h3>
+            {/* Desktop test: a clicked (locked) project opens its details under the title. */}
+            <div className={styles.inline}>
+              <div className={styles.inlineInner}>
+                <Details project={project} />
+              </div>
+            </div>
+            </div>
 
             <div id={panelId} className={styles.panel}>
               <Gallery name={project.name} images={project.images} active={isActive} />
               <div className={styles.body}>
-                {role && <p className={styles.role}>{role}</p>}
-                <div className={styles.tags}>
-                  {project.tags.map((tag) => (
-                    <span key={tag.label} className={`tag ${tag.accent ? "tag--accent" : ""}`}>
-                      {tag.label}
-                    </span>
-                  ))}
-                </div>
-                {project.summary && <p className={styles.summary}>{project.summary}</p>}
-                <p>{project.description}</p>
-                <dl className={styles.facts}>
-                  {otherFacts.map((fact) => (
-                    <div key={fact.label}>
-                      <dt>{fact.label}</dt>
-                      <dd>{fact.value}</dd>
-                    </div>
-                  ))}
-                </dl>
+                <Details project={project} />
               </div>
             </div>
           </div>
         );
       })}
     </div>
+  );
+}
+
+/** Role, tags, description and the remaining facts of one project. */
+function Details({ project }: { project: Project }) {
+  // The role is the heading; the other facts stay in the list.
+  const role = project.facts.find((fact) => fact.label === "Role")?.value;
+  const otherFacts = project.facts.filter((fact) => fact.label !== "Role");
+  return (
+    <>
+      {role && <p className={styles.role}>{role}</p>}
+      <div className={styles.tags}>
+        {project.tags.map((tag) => (
+          <span key={tag.label} className={`tag ${tag.accent ? "tag--accent" : ""}`}>
+            {tag.label}
+          </span>
+        ))}
+      </div>
+      {project.summary && <p className={styles.summary}>{project.summary}</p>}
+      <p className={styles.description}>{project.description}</p>
+      <dl className={styles.facts}>
+        {otherFacts.map((fact) => (
+          <div key={fact.label}>
+            <dt>{fact.label}</dt>
+            <dd>{fact.value}</dd>
+          </div>
+        ))}
+      </dl>
+    </>
   );
 }
 
