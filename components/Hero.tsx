@@ -10,9 +10,9 @@ export default function Hero() {
           <p className={styles.eyebrow}>Zagreb, Croatia · Remote</p>
           <h1 id="hero-title">Hi, I&rsquo;m Tomislav. I build digital products that are clear, useful and easy to use.</h1>
           <p className="lead">
-            I&rsquo;m a Senior Frontend Engineer with 17+ years of experience, combining product thinking with strong
-            UI execution. I&rsquo;ve worked on SaaS products used at global scale and built my own product from the
-            ground up.
+            I&rsquo;m a Senior Frontend Engineer with 17+ years of experience building SaaS and web products, from
+            large-scale platforms to my own product from the ground up, with a strong focus on product thinking, UI
+            quality and frontend execution.
           </p>
           <p className="lead">
             I care about the details people notice when they use a product &mdash; how it looks, how it behaves, how
