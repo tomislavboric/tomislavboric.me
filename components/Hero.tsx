@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { email, profiles } from "@/data/profile";
+import { profiles } from "@/data/profile";
 import styles from "./Hero.module.css";
 
 export default function Hero() {
@@ -10,20 +10,14 @@ export default function Hero() {
           <p className={styles.eyebrow}>Zagreb, Croatia · Remote</p>
           <h1 id="hero-title">Hi, I&rsquo;m Tomislav. I build digital products that are clear, useful and easy to use.</h1>
           <p className="lead">
-            I&rsquo;m a Senior Frontend Engineer with 17+ years of experience building SaaS and web products, from
-            large-scale platforms to my own product from the ground up, with a strong focus on product thinking, UI
-            quality and frontend execution.
-          </p>
-          <p className="lead">
-            I care about the details people notice when they use a product &mdash; how it looks, how it behaves, how
-            easy it is to understand, and whether it feels properly finished.
+            I&rsquo;m a Senior Frontend Engineer with 17+ years of experience building SaaS and web products, from large-scale platforms to my own product from the ground up, with a strong focus on product thinking, UI quality and frontend execution.
           </p>
           <div className="actions">
             <a className="button button--primary" href="#work">
               See selected work
             </a>
-            <a className="button" href={`mailto:${email}`}>
-              Email me
+            <a className="button" href="#contact">
+              Say hi
             </a>
           </div>
           <ul className={styles.links} aria-label="Profiles">
