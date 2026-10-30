@@ -1,4 +1,2 @@
-.work { padding-block: clamp(40px, 7vw, 80px); border-top: 1px solid var(--border); }
-.grid { display: grid; gap: 24px; }
-@media (min-width: 720px) { .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
-.more { margin-top: 32px; color: var(--text-muted); max-width: 70ch; }
+.work { padding-block: clamp(40px, 7vw, 9rem); border-top: 1px solid var(--border); }
+.more { margin-top: 3rem; color: var(--text-muted); max-width: 70ch; }

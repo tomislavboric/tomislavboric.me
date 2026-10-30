@@ -1,5 +1,5 @@
-import { featuredProject, projects } from "@/data/projects";
-import ProjectCard from "./ProjectCard";
+import { projects } from "@/data/projects";
+import WorkIndex from "./WorkIndex";
 import styles from "./Work.module.css";
 
 export default function Work() {
@@ -16,13 +16,7 @@ export default function Work() {
           </p>
         </header>
 
-        <ProjectCard project={featuredProject} featured />
-
-        <div className={styles.grid}>
-          {projects.map((project) => (
-            <ProjectCard key={project.slug} project={project} />
-          ))}
-        </div>
+        <WorkIndex projects={projects} />
 
         <p className={styles.more}>
           Also on the record: more than twenty custom WordPress builds for clients (membership, e-commerce, booking),

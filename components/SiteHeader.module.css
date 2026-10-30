@@ -4,7 +4,7 @@
   backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
   border-bottom: 1px solid var(--border);
 }
-.inner { display: flex; align-items: center; justify-content: space-between; gap: 16px; min-height: 58px; }
+.inner { display: flex; align-items: center; justify-content: space-between; gap: 1rem; min-height: 3.625rem; }
 .brand { font-family: var(--font-mono); font-size: 0.95rem; text-decoration: none; letter-spacing: 0.02em; }
 .brand::before { content: "~/ "; color: var(--accent); }
 .nav { display: flex; gap: clamp(14px, 3vw, 28px); font-family: var(--font-mono); font-size: 0.85rem; }

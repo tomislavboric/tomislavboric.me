@@ -22,7 +22,7 @@ export default function Contact() {
             </a>
           ))}
         </div>
-        <p className={styles.note}>Based in Zagreb, Croatia (CET). Five years of working remotely with a US-based team.</p>
+        <p className={styles.note}>Based in Zagreb, Croatia (CET).</p>
       </div>
     </section>
   );

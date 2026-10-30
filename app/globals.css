@@ -10,6 +10,8 @@
   --bg-soft: #161f2c;
   --text: #e6edf3;
   --text-muted: #8b98a8;
+  /* Unselected big titles only: passes 3:1 for large text, not for body copy. */
+  --text-faint: #66778a;
   --accent: #4fd1c5;
   --accent-ink: #06201d;
   --accent-soft: #10302e;
@@ -21,16 +23,23 @@
   --font-mono: ui-monospace, "SF Mono", "JetBrains Mono", Menlo, Consolas, monospace;
 
   --measure: 62ch;
-  --container: 1120px;
-  --gutter: 16px;
+  /* Fluid layout: content runs nearly edge to edge and the side margin grows
+     with the window. The cap only stops ultrawide screens from going silly. */
+  --container: 2400px;
+  --gutter: clamp(16px, 5vw, 160px);
   --radius: 10px;
   --radius-sm: 6px;
 }
 /* The site is dark by design; a light scheme is not offered. */
-@media (min-width: 720px) { :root { --gutter: 32px; } }
 
 *, *::before, *::after { box-sizing: border-box; }
-html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+/* Fluid type: 16px up to a 1440px window, then growing to 20px at 2560px.
+   Everything sized in rem (text, spacing, components) scales along with it.
+   Percentages keep the user's own browser font setting in charge. */
+html {
+  font-size: clamp(100%, 0.68rem + 0.36vw, 125%);
+  scroll-behavior: smooth; -webkit-text-size-adjust: 100%;
+}
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
 
 body {
@@ -58,22 +67,22 @@ h1, h2, h3 {
   margin: 0 0 0.5em;
   text-wrap: balance;
 }
-h1 { font-size: clamp(2rem, 1.2rem + 3.6vw, 3.6rem); }
-h2 { font-size: clamp(1.6rem, 1.1rem + 2vw, 2.3rem); }
+h1 { font-size: clamp(2rem, 0.6rem + 3.4vw, 6rem); }
+h2 { font-size: clamp(1.6rem, 0.9rem + 1.8vw, 3.4rem); }
 h3 { font-size: 1.35rem; }
 p { margin: 0 0 1em; max-width: var(--measure); }
 p:last-child { margin-bottom: 0; }
 
-section { scroll-margin-top: 72px; }
+section { scroll-margin-top: 4.5rem; }
 
 /* Shared primitives */
 .container { width: min(100% - 2 * var(--gutter), var(--container)); margin-inline: auto; }
 
 .lead { font-size: 1.15rem; color: var(--text-muted); }
 
-.actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px; }
+.actions { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 1.75rem; }
 .button {
-  display: inline-flex; align-items: center; min-height: 46px; padding: 10px 20px;
+  display: inline-flex; align-items: center; min-height: 2.875rem; padding: 0.625rem 1.25rem;
   border: 1px solid var(--border); border-radius: var(--radius-sm);
   background: var(--bg-raised); color: var(--text); font-weight: 500; text-decoration: none;
   font-family: var(--font-mono); font-size: 0.92rem;
@@ -86,5 +95,12 @@ section { scroll-margin-top: 72px; }
 .section-title::before {
   content: "// "; color: var(--accent); font-family: var(--font-mono); font-weight: 500;
 }
-.section-head { margin-bottom: clamp(24px, 4vw, 40px); }
+.tag {
+  display: inline-block; padding: 0.1875rem 0.5625rem; border-radius: var(--radius-sm);
+  background: var(--bg-soft); color: var(--text-muted); border: 1px solid var(--border);
+  font-family: var(--font-mono); font-size: 0.74rem; letter-spacing: 0.02em;
+}
+.tag--accent { background: var(--accent-soft); color: var(--accent); border-color: transparent; }
+
+.section-head { margin-bottom: clamp(24px, 3vw, 4rem); }
 .section-head p { color: var(--text-muted); font-size: 1.05rem; }

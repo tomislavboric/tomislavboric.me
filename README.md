@@ -2,7 +2,7 @@
 
 Source of my personal site, live at **[www.tomislavboric.me](https://www.tomislavboric.me/)**.
 
-Built with Next.js (App Router, TypeScript) and hand-written CSS Modules. No tracking.
+Built with Next.js (App Router, TypeScript) and CSS Modules. No tracking code in the repo.
 
 - `app/` holds the layout, page metadata, global styles and the favicon.
 - `components/` holds one component per section, each with its own CSS Module.

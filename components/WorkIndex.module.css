@@ -1,0 +1,95 @@
+/* Phone and tablet: one project after another, title then image and details. */
+.index { display: grid; gap: 40px; }
+.item { display: grid; gap: 18px; padding-top: 20px; border-top: 1px solid var(--border); }
+.head { margin: 0; }
+
+.title {
+  display: grid; grid-template-columns: auto minmax(0, 1fr) auto; column-gap: 12px; row-gap: 6px;
+  align-items: baseline; text-decoration: none; color: var(--text);
+}
+.num { font-family: var(--font-mono); font-size: 0.85rem; font-weight: 400; color: var(--accent); transition: color 160ms; }
+.name { font-size: clamp(2.2rem, 0.4rem + 3vw, 5.5rem); font-weight: 650; line-height: 1.02; letter-spacing: -0.035em; }
+.arrow { display: none; color: var(--accent); }
+.meta {
+  grid-column: 2 / -1; font-family: var(--font-mono); font-size: 0.8rem; font-weight: 400;
+  letter-spacing: 0.02em; color: var(--text-muted); line-height: 1.4;
+}
+
+/* One box of a fixed shape for every screenshot (the shape of most of them),
+   so the arrows below never move. The screenshots are made in this shape;
+   anything else is cropped from the top left. */
+.media { margin: 0; }
+.canvas {
+  position: relative; aspect-ratio: 1440 / 1000; overflow: hidden; background: var(--bg-soft);
+  border: 1px solid var(--border); border-radius: var(--radius); box-shadow: var(--shadow);
+}
+.frame { position: absolute; inset: 0; }
+.frame[hidden] { display: none; }
+.frame img { width: 100%; height: 100%; object-fit: cover; object-position: top left; }
+
+.bar { display: flex; align-items: center; justify-content: space-between; gap: 0.75rem; margin-top: 0.75rem; }
+.counter { font-family: var(--font-mono); font-size: 0.8rem; color: var(--text-muted); }
+.arrows { display: flex; gap: 0.5rem; }
+.arrowButton {
+  width: 2.75rem; height: 2.75rem; display: grid; place-items: center; padding: 0; cursor: pointer;
+  border: 1px solid var(--border); border-radius: var(--radius-sm); background: var(--bg-raised);
+  color: var(--text); transition: border-color 150ms, color 150ms;
+}
+.arrowButton:hover { border-color: var(--accent); color: var(--accent); }
+
+.hidden {
+  position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0; overflow: hidden;
+  clip: rect(0 0 0 0); white-space: nowrap; border: 0;
+}
+.body { padding-top: 1.25rem; }
+.role { margin-bottom: 0.6rem; font-size: 1.2rem; font-weight: 500; color: var(--text); }
+.tags { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 0.9rem; }
+.summary { color: var(--text-muted); }
+.body > p:not(.role) { color: var(--text-muted); }
+.facts { display: grid; gap: 0.625rem; margin: 1.125rem 0 0; padding-top: 1rem; border-top: 1px solid var(--border); font-size: 0.92rem; }
+.facts div { display: grid; grid-template-columns: 5.5em 1fr; gap: 10px; }
+.facts dt { color: var(--accent); font-family: var(--font-mono); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.04em; padding-top: 2px; }
+.facts dd { margin: 0; }
+
+/* Desktop: titles in a column on the left, the selected project large on the
+   right. Every item's title gets its own row; all panels share the right
+   column, stacked in the same cell, and only the selected one is visible.
+   The extra 1fr row takes up the height when the panel is taller than the list. */
+@media (min-width: 960px) {
+  .index {
+    grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+    grid-template-rows: repeat(var(--count), auto) 1fr;
+    column-gap: clamp(48px, 4.5vw, 8rem); row-gap: 0;
+  }
+  .item { display: contents; }
+
+  .head { grid-column: 1; grid-row: var(--row); border-top: 1px solid var(--border); }
+  .item:last-child .head { border-bottom: 1px solid var(--border); }
+
+  .title { padding: 1.375rem 0 1.5rem; color: var(--text-faint); transition: color 160ms; }
+  .num { color: var(--text-faint); }
+  .arrow { display: block; align-self: center; opacity: 0; transform: translateX(-8px); transition: opacity 160ms, transform 160ms; }
+
+  .item[data-active] .title,
+  .item[data-active] .title:hover { color: var(--text); }
+  .item[data-active] .num { color: var(--accent); }
+  .item[data-active] .arrow { opacity: 1; transform: none; }
+  /* Selecting a project: its screenshot settles in from a slight zoom, as in A. */
+  .frame img { transform: scale(1.03); transition: transform 600ms ease; }
+  .item[data-active] .frame img { transform: none; }
+  /* Clicked title: locked in place, hovering other titles no longer switches. */
+  .item[data-locked] .name { text-decoration: underline; text-decoration-color: var(--accent); text-decoration-thickness: 0.06em; text-underline-offset: 0.14em; }
+
+  .panel {
+    grid-column: 2; grid-row: 1 / -1; align-self: start;
+    position: sticky; top: 5.5rem;
+    opacity: 0; visibility: hidden;
+    transition: opacity 300ms ease, visibility 0s linear 300ms;
+  }
+  .item[data-active] .panel { opacity: 1; visibility: visible; transition: opacity 300ms ease; }
+
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .title, .num, .arrow, .panel, .arrowButton, .frame img { transition: none !important; }
+}
