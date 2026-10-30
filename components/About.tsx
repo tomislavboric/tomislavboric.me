@@ -45,7 +45,6 @@ export default function About() {
             run it. It taught me more about data modelling, security rules and operations than any client project
             could.
           </p>
-          <p>I use AI tools every day and say so. The architecture, the decisions and the bugs are still mine.</p>
         </div>
         <aside className={styles.side}>
           <h3>What you can expect</h3>
