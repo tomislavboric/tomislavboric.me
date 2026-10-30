@@ -11,7 +11,7 @@ export default function Work() {
             Selected work
           </h2>
           <p>
-            Four projects that show how I work: one I own end to end, one for a client, one inside a product team,
+            Five projects that show how I work: one I own end to end, two for clients, one inside a product team,
             and one small thing I built for my friends.
           </p>
         </header>
@@ -26,7 +26,7 @@ export default function Work() {
 
         <p className={styles.more}>
           Also on the record: more than twenty custom WordPress builds for clients (membership, e-commerce, booking),
-          the front end of a Laravel bookshop and of an auction marketplace, and a tested MemberPress pricing plugin.
+          the front end of an auction marketplace, and a tested MemberPress pricing plugin.
           Happy to walk through any of them.
         </p>
       </div>

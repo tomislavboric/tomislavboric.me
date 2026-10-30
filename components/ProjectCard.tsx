@@ -20,7 +20,7 @@ export default function ProjectCard({ project, featured = false }: Props) {
           sizes={
             featured
               ? "(min-width: 1184px) 1120px, calc(100vw - 32px)"
-              : "(min-width: 1000px) 360px, (min-width: 720px) 50vw, 100vw"
+              : "(min-width: 1184px) 548px, (min-width: 720px) 50vw, 100vw"
           }
           alt={image.alt}
         />

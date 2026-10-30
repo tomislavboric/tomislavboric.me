@@ -48,6 +48,23 @@ export const projects: Project[] = [
     ],
   },
   {
+    slug: "alfa",
+    title: "Alfa — online bookshop for a Croatian publisher",
+    image: {
+      src: "/img/alfa-category-prototype-1440.webp",
+      width: 1440,
+      height: 1000,
+      alt: "Alfa bookshop prototype, the 'Školski program' category: header with the Alfa logo, book categories, search and cart, a sidebar with filters by book type and school subject, and a grid of book covers with discounts and prices in euros.",
+    },
+    tags: [{ label: "Client", accent: true }],
+    description:
+      "I built the whole storefront as a working static prototype first: home with a hero slider and bestsellers, a mega menu, category pages filtered by school subject and book type, the book page, cart, a four-step checkout, account, favourites and a blog. Then I moved those templates into the Laravel Blade views while another developer built the backend for orders, receipts and delivery.",
+    facts: [
+      { label: "Role", value: "Designer and front-end developer" },
+      { label: "Stack", value: "Foundation 6, SCSS, Handlebars (Panini), Gulp, Swiper, Laravel Blade" },
+    ],
+  },
+  {
     slug: "sched",
     title: "Sched — product UI in an event-management SaaS",
     image: {
